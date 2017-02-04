@@ -1,5 +1,3 @@
-const Stack = require('./stack');
-
 class FSM {
     /**
      * Creates new FSM instance.
@@ -111,6 +109,36 @@ class FSM {
         this.doneStates.clear();
         this.undoneStates.clear();
         this.doneStates.push(this.initial);
+    }
+}
+
+class Stack {
+    constructor () {
+        this.data = [];
+        this.top = 0;
+    }
+
+    push(element) {
+        this.data[this.top++] = element;
+    }
+
+    pop() {
+        if (this.length() > 0) {
+            return this.data[--this.top];
+        }
+        else throw new Error("No elements to pop");
+    }
+
+    peek() {
+        return this.data[this.top-1];
+    }
+
+    length() {
+        return this.top;
+    }
+
+    clear() {
+        this.top = 0;
     }
 }
 
